@@ -4,7 +4,8 @@ import java.util.List;
 
 public class Agente {
 	private String nombreCompleto;
-	private DatosDeContacto datosDeContacto;
+	private Entidad datosDeEntidad;
+	private int empresaContratante;
 	private List<Empresa> empresasEnSeguimiento;
 	
 	public String getNombreCompleto() {
@@ -13,11 +14,17 @@ public class Agente {
 	public void setNombreCompleto(String nombreCompleto) {
 		this.nombreCompleto = nombreCompleto;
 	}
-	public DatosDeContacto getDatosDeContacto() {
-		return datosDeContacto;
+	public Entidad getDatosDeEntidad() {
+		return datosDeEntidad;
 	}
-	public void setDatosDeContacto(DatosDeContacto datosDeContacto) {
-		this.datosDeContacto = datosDeContacto;
+	public void setDatosDeEntidad(Entidad datosDeEntidad) {
+		this.datosDeEntidad = datosDeEntidad;
+	}
+	public int getEmpresaContratante() {
+		return empresaContratante;
+	}
+	public void setEmpresaContratante(int empresaContratante) {
+		this.empresaContratante = empresaContratante;
 	}
 	public List<Empresa> getEmpresasEnSeguimiento() {
 		return empresasEnSeguimiento;

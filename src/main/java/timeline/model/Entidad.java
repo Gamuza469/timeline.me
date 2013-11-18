@@ -1,7 +1,7 @@
 package timeline.model;
 
 
-public class DatosDeContacto {
+public class Entidad {
 	private int cuit;
 	private String domicilio;
 	private String telefono;

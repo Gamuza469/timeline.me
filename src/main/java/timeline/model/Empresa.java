@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Empresa {
 	private String razonSocial;
-	private DatosDeContacto datosDeContacto;
+	private Entidad datosDeEntidad;
 	private List<Noticia> lineaDeTiempo;
 	private List<Agente> agentesAutorizados;
 	
@@ -14,11 +14,11 @@ public class Empresa {
 	public void setRazonSocial(String razonSocial) {
 		this.razonSocial = razonSocial;
 	}
-	public DatosDeContacto getDatosDeContacto() {
-		return datosDeContacto;
+	public Entidad getDatosDeEntidad() {
+		return datosDeEntidad;
 	}
-	public void setDatosDeContacto(DatosDeContacto datosDeContacto) {
-		this.datosDeContacto = datosDeContacto;
+	public void setDatosDeEntidad(Entidad datosDeEntidad) {
+		this.datosDeEntidad = datosDeEntidad;
 	}
 	public List<Noticia> getLineaDeTiempo() {
 		return lineaDeTiempo;
