@@ -5,11 +5,18 @@ import java.util.Date;
 import java.util.List;
 
 public class Noticia {
+	private int idNoticia;
 	private String encabezado;
 	private String contenido;
 	private Date fechaCreacion;
 	private List<File> listaAdjuntos;
 	
+	public int getIdNoticia() {
+		return idNoticia;
+	}
+	public void setIdNoticia(int idNoticia) {
+		this.idNoticia = idNoticia;
+	}
 	public String getEncabezado() {
 		return encabezado;
 	}
