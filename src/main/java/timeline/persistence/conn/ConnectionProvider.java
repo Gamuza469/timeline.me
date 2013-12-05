@@ -14,11 +14,10 @@ public class ConnectionProvider {
 	private String url = "jdbc:mysql://localhost:3306/";
 	private String dbname = "timeline";
 	private String username = "root";
-	private String password = "";
 	private ConnectionProvider() throws PersistenceException {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			connection = DriverManager.getConnection(url+dbname, username, password);
+			connection = DriverManager.getConnection(url+dbname, username, null);
 		} catch (Exception classNotFoundException) {
 			throw new PersistenceException(classNotFoundException);
 		}
@@ -37,7 +36,7 @@ public class ConnectionProvider {
 			this.closeConnection();
 			// siempre debe ser una nueva conexión, por cuestiones de SQLite
 
-			connection = DriverManager.getConnection(this.url);
+			connection = DriverManager.getConnection(url+dbname, username, null);
 			connection.setAutoCommit(false);
 		} catch (Exception exception) {
 			throw new PersistenceException(exception);

@@ -8,12 +8,8 @@ import timeline.model.Empresa;
 import timeline.model.Entidad;
 import timeline.model.Noticia;
 import timeline.model.relation.EmpresaAutorizaAgente;
-import timeline.persistence.AdjuntoDao;
-import timeline.persistence.AgenteDao;
 import timeline.persistence.DaoFactory;
 import timeline.persistence.EmpresaDao;
-import timeline.persistence.EntidadDao;
-import timeline.persistence.NoticiaDao;
 import timeline.persistence.PersistenceException;
 import timeline.persistence.relation.EmpresaAutorizaAgenteDao;
 
@@ -30,27 +26,27 @@ public class EmpresaSvc {
 	
 	public Empresa getEmpresa (int cuitEmpresa) throws PersistenceException {
 		EmpresaDao empresaDao = DaoFactory.getEmpresaDao();
-		AgenteDao agenteDao = DaoFactory.getAgenteDao();
-		EntidadDao entidadDao = DaoFactory.getEntidadDao();
-		NoticiaDao noticiaDao = DaoFactory.getNoticiaDao();
-		AdjuntoDao adjuntoDao = DaoFactory.getAdjuntoDao();
+		AgenteSvc agenteSvc = SvcFactory.getAgenteSvc();
+		EntidadSvc entidadSvc = SvcFactory.getEntidadSvc();
+		NoticiaSvc noticiaSvc = SvcFactory.getNoticiaSvc();
+		AdjuntoSvc adjuntoSvc = SvcFactory.getAdjuntoSvc();
 		EmpresaAutorizaAgenteDao empresaAutorizaAgenteDao = DaoFactory.getEmpresaAutorizaAgenteDao();
 		
 		Empresa empresa = empresaDao.findByCuit(cuitEmpresa);
-		Entidad entidad = entidadDao.findByCuit(cuitEmpresa);
+		Entidad entidad = entidadSvc.findByCuit(cuitEmpresa);
 		empresa.setDatosDeEntidad(entidad);
 		
 		List<Agente> listaAgentes = new LinkedList<Agente>();
 		List<EmpresaAutorizaAgente> listaAgentesAutorizados = empresaAutorizaAgenteDao.findByEmpresaCuit(empresa.getDatosDeEntidad().getCuit());
 		for (EmpresaAutorizaAgente item: listaAgentesAutorizados) {
-			Agente agente = agenteDao.findByCuit(item.getCuitAgente());			
-			agente.setDatosDeEntidad(entidadDao.findByCuit(item.getCuitAgente()));
+			Agente agente = agenteSvc.findByCuit(item.getCuitAgente());			
+			agente.setDatosDeEntidad(entidadSvc.findByCuit(item.getCuitAgente()));
 			listaAgentes.add(agente);
 		}		
 		
-		List<Noticia> listaNoticias = noticiaDao.findByCuit(cuitEmpresa);
+		List<Noticia> listaNoticias = noticiaSvc.findByCuit(cuitEmpresa);
 		for (Noticia noticia: listaNoticias) {
-			noticia.setListaAdjuntos(adjuntoDao.findByIdNoticia(noticia.getIdNoticia()));
+			noticia.setListaAdjuntos(adjuntoSvc.findByIdNoticia(noticia.getIdNoticia()));
 		}
 		
 		empresa.setAgentesAutorizados(listaAgentes);

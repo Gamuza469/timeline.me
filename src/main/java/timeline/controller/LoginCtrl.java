@@ -26,8 +26,8 @@ public class LoginCtrl {
 				throws PersistenceException
 	{
 		ModelAndView mav = new ModelAndView();
-		int username = (int) request.getAttribute("username");
-		String password = (String) request.getAttribute("password");
+		String username = (String) request.getParameter("username");
+		String password = (String) request.getParameter("password");
 		boolean usuarioConfirmado = loginSvc.autenticarUsuario(username, password);
 		boolean esUsuarioAgente = loginSvc.confirmaAgente(username);
 		

@@ -13,13 +13,13 @@ public class EntidadDaoImpl implements EntidadDao {
 		return instance;
 	}
 	@Override
-	public Entidad findByCuit(int cuit) throws PersistenceException {
+	public Entidad findByCuit(String cuit) throws PersistenceException {
 		Entidad entidad = new Entidad();
 		try {
 			String query = "SELECT * FROM entidad WHERE cuit = ?";
 			PreparedStatement statement = ConnectionProvider.getInstance()
 					.getConnection().prepareStatement(query);
-			statement.setInt(1, cuit);
+			statement.setString(1, cuit);
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				entidad = this.convertOne(resultSet);

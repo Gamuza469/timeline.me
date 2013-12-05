@@ -13,13 +13,13 @@ public class AgenteDaoImpl implements AgenteDao {
 		return instance;
 	}
 	@Override
-	public Agente findByCuit(int cuit) throws PersistenceException {
+	public Agente findByCuit(String cuit) throws PersistenceException {
 		Agente agente = new Agente();
 		try {
 			String query = "SELECT * FROM agente WHERE cuit = ?";
 			PreparedStatement statement = ConnectionProvider.getInstance()
 					.getConnection().prepareStatement(query);
-			statement.setInt(1, cuit);
+			statement.setString(1, cuit);
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				agente = this.convertOne(resultSet);

@@ -8,7 +8,7 @@ import timeline.persistence.EntidadDao;
 import timeline.persistence.PersistenceException;
 
 public class LoginSvc {
-	public boolean autenticarUsuario (int username, String password) throws PersistenceException {
+	public boolean autenticarUsuario (String username, String password) throws PersistenceException {
 		EntidadDao entidadDao = DaoFactory.getEntidadDao();
 		Entidad entidad = entidadDao.findByCuit(username);
 		
@@ -18,7 +18,7 @@ public class LoginSvc {
 			return false;
 	}
 	
-	public boolean confirmaAgente (int username) throws PersistenceException {
+	public boolean confirmaAgente (String username) throws PersistenceException {
 		AgenteDao agenteDao = DaoFactory.getAgenteDao();
 		Agente agente = agenteDao.findByCuit(username);
 		
