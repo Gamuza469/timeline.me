@@ -4,6 +4,8 @@ import java.util.List;
 
 import timeline.model.Empresa;
 import timeline.model.Noticia;
+import timeline.persistence.DaoFactory;
+import timeline.persistence.EmpresaDao;
 
 public class EmpresaSvc {
 	public Empresa getEmpresa (String cuitEmpresa) {

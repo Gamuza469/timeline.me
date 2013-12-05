@@ -1,5 +1,10 @@
 package timeline.persistence;
 
-public class EmpresaDao {
-	
+import java.util.List;
+
+import timeline.model.Empresa;
+
+public interface EmpresaDao {
+	public Empresa findByCuit (String cuit) throws PersistenceException;
+	public List<Empresa> findAll () throws PersistenceException;
 }

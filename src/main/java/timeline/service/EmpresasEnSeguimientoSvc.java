@@ -6,7 +6,7 @@ import timeline.model.Empresa;
 
 public class EmpresasEnSeguimientoSvc {
 	public List<Empresa> getEmpresasEnSeguimiento (String username) {
-		EmpresaDao empresaDao = DaoFactory.getEmpresaDao();
+		EmpresaDaoImpl empresaDao = DaoFactory.getEmpresaDao();
 		List<Empresa> listaEmpresas = empresaDao.findEmpresasEnSeguimientoByCuit(username);
 		
 		return listaEmpresas;

@@ -50,3 +50,27 @@ CREATE TABLE archivo_adjunto (
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
 );
+
+CREATE TABLE sigue_a (
+  	cuitAgente INTEGER,
+  	cuitEmpresa INTEGER,
+  PRIMARY KEY (`cuitAgente`, `cuitEmpresa`),
+  FOREIGN KEY (`cuitAgente`) REFERENCES `agente` (`cuit`)
+  		ON UPDATE CASCADE
+  		ON DELETE CASCADE,
+  FOREIGN KEY (`cuitEmpresa`) REFERENCES `empresa` (`cuit`)
+  		ON UPDATE CASCADE
+  		ON DELETE CASCADE
+);
+
+CREATE TABLE autoriza_a (
+	cuitEmpresa INTEGER,
+  	cuitAgente INTEGER,
+  PRIMARY KEY (`cuitEmpresa`, `cuitAgente`),
+  FOREIGN KEY (`cuitEmpresa`) REFERENCES `empresa` (`cuit`)
+  		ON UPDATE CASCADE
+  		ON DELETE CASCADE,
+  FOREIGN KEY (`cuitAgente`) REFERENCES `agente` (`cuit`)
+  		ON UPDATE CASCADE
+  		ON DELETE CASCADE
+);
