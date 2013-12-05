@@ -3,6 +3,7 @@ package timeline.model;
 
 public class Entidad {
 	private int cuit;
+	private String password;
 	private String domicilio;
 	private String telefono;
 	private String email;
@@ -12,6 +13,12 @@ public class Entidad {
 	}
 	public void setCuit(int cuit) {
 		this.cuit = cuit;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getDomicilio() {
 		return domicilio;

@@ -3,6 +3,7 @@ USE `timeline`;
 
 CREATE TABLE entidad (
 	cuit INTEGER,
+	password VARCHAR(255),
 	domicilio VARCHAR(255),
 	telefono VARCHAR(127),
 	eMail VARCHAR(127),
