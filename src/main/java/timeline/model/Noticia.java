@@ -1,6 +1,6 @@
 package timeline.model;
 
-import java.io.File;
+import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +9,7 @@ public class Noticia {
 	private String encabezado;
 	private String contenido;
 	private Date fechaCreacion;
-	private List<File> listaAdjuntos;
+	private List<Blob> listaAdjuntos;
 	
 	public int getIdNoticia() {
 		return idNoticia;
@@ -35,10 +35,10 @@ public class Noticia {
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
-	public List<File> getListaAdjuntos() {
+	public List<Blob> getListaAdjuntos() {
 		return listaAdjuntos;
 	}
-	public void setListaAdjuntos(List<File> listaAdjuntos) {
+	public void setListaAdjuntos(List<Blob> listaAdjuntos) {
 		this.listaAdjuntos = listaAdjuntos;
 	}
 }

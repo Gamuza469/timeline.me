@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import timeline.model.Agente;
+import timeline.persistence.conn.ConnectionProvider;
 
 public class AgenteDaoImpl implements AgenteDao {
 	private static AgenteDao instance = new AgenteDaoImpl();
@@ -12,13 +13,13 @@ public class AgenteDaoImpl implements AgenteDao {
 		return instance;
 	}
 	@Override
-	public Agente findByCuit(String cuit) throws PersistenceException {
+	public Agente findByCuit(int cuit) throws PersistenceException {
 		Agente agente = new Agente();
 		try {
 			String query = "SELECT * FROM agente WHERE cuit = ?";
 			PreparedStatement statement = ConnectionProvider.getInstance()
 					.getConnection().prepareStatement(query);
-			statement.setString(1, cuit);
+			statement.setInt(1, cuit);
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				agente = this.convertOne(resultSet);

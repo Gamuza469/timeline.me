@@ -11,11 +11,11 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import timeline.persistence.PersistenceException;
-import timeline.service.LoginSvc;
 import timeline.service.SvcFactory;
+import timeline.service.controller.LoginSvc;
 
-@SessionAttributes({"username", "tipoUsuario"})
 @Controller
+@SessionAttributes({"username", "tipoUsuario"})
 public class LoginCtrl {
 
 	LoginSvc loginSvc = SvcFactory.getLoginSvc();
@@ -26,14 +26,14 @@ public class LoginCtrl {
 				throws PersistenceException
 	{
 		ModelAndView mav = new ModelAndView();
-		String username = (String) request.getAttribute("username");
+		int username = (int) request.getAttribute("username");
 		String password = (String) request.getAttribute("password");
 		boolean usuarioConfirmado = loginSvc.autenticarUsuario(username, password);
 		boolean esUsuarioAgente = loginSvc.confirmaAgente(username);
 		
 		if (usuarioConfirmado == true) {
 			mav.addObject("username", username);
-			mav.setViewName("lineaDeTiempo");
+			mav.setViewName("empresa");
 			if (esUsuarioAgente == true)
 				mav.addObject("tipoUsuario", "agente");
 			else

@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import timeline.model.Empresa;
+import timeline.persistence.conn.ConnectionProvider;
 
 
 public class EmpresaDaoImpl implements EmpresaDao {
@@ -16,13 +17,13 @@ public class EmpresaDaoImpl implements EmpresaDao {
 	}
 
 	@Override
-	public Empresa findByCuit(String cuit) throws PersistenceException {
+	public Empresa findByCuit(int cuit) throws PersistenceException {
 		Empresa empresa = new Empresa();
 		try {
 			String query = "SELECT * FROM empresa WHERE cuit = ?";
 			PreparedStatement statement = ConnectionProvider.getInstance()
 					.getConnection().prepareStatement(query);
-			statement.setString(1, cuit);
+			statement.setInt(1, cuit);
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				empresa = this.convertOne(resultSet);

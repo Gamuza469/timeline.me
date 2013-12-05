@@ -13,8 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import timeline.model.Agente;
 import timeline.persistence.PersistenceException;
-import timeline.service.MostrarAgentesSvc;
 import timeline.service.SvcFactory;
+import timeline.service.controller.MostrarAgentesSvc;
 
 @Controller
 @SessionAttributes({"username", "tipoUsuario"})
@@ -28,7 +28,7 @@ public class MostrarAgentesCtrl {
 			throws PersistenceException
 	{
 		ModelAndView mav = new ModelAndView();
-		String username = (String) request.getAttribute("username");
+		int username = (int) request.getAttribute("username");
 		String tipoUsuario = (String) request.getAttribute("tipoUsuario");
 		
 		List<Agente> listaAgentes = mostrarAgentesSvc.getAgentesEmpresa(username);

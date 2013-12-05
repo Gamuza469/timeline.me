@@ -1,6 +1,8 @@
-package timeline.persistence;
+package timeline.persistence.conn;
 
 import java.sql.Connection;
+
+import timeline.persistence.PersistenceException;
 
 public interface Transaction {
     

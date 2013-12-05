@@ -1,5 +1,13 @@
 package timeline.service;
 
+import timeline.service.controller.EmpresaCtrlSvc;
+import timeline.service.controller.EmpresasEnSeguimientoSvc;
+import timeline.service.controller.ListaDeEmpresasSvc;
+import timeline.service.controller.LoginSvc;
+import timeline.service.controller.MostrarAgentesSvc;
+import timeline.service.relation.AgenteSigueEmpresaSvc;
+import timeline.service.relation.EmpresaAutorizaAgenteSvc;
+
 public class SvcFactory {
 	public static EmpresaSvc getEmpresaSvc () {
 		return new EmpresaSvc();
@@ -21,12 +29,16 @@ public class SvcFactory {
 		return new AdjuntoSvc();
 	}
 	
-	public static LoginSvc getLoginSvc () {
-		return new LoginSvc();
+	public static EmpresaAutorizaAgenteSvc getEmpresaAutorizaAgenteSvc () {
+		return new EmpresaAutorizaAgenteSvc();
 	}
 	
-	public static LineaDeTiempoSvc getLineaDeTiempoSvc () {
-		return new LineaDeTiempoSvc();
+	public static AgenteSigueEmpresaSvc getAgenteSigueEmpresaSvc () {
+		return new AgenteSigueEmpresaSvc();
+	}
+	
+	public static LoginSvc getLoginSvc () {
+		return new LoginSvc();
 	}
 	
 	public static MostrarAgentesSvc getMostrarAgentesSvc () {

@@ -1,4 +1,4 @@
-package timeline.model;
+package timeline.model.relation;
 
 public class AgenteSigueEmpresa {
 	private int cuitAgente;

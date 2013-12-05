@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import timeline.model.Entidad;
+import timeline.persistence.conn.ConnectionProvider;
 
 public class EntidadDaoImpl implements EntidadDao {
 	private static EntidadDao instance = new EntidadDaoImpl();
@@ -12,13 +13,13 @@ public class EntidadDaoImpl implements EntidadDao {
 		return instance;
 	}
 	@Override
-	public Entidad findByCuit(String cuit) throws PersistenceException {
+	public Entidad findByCuit(int cuit) throws PersistenceException {
 		Entidad entidad = new Entidad();
 		try {
 			String query = "SELECT * FROM entidad WHERE cuit = ?";
 			PreparedStatement statement = ConnectionProvider.getInstance()
 					.getConnection().prepareStatement(query);
-			statement.setString(1, cuit);
+			statement.setInt(1, cuit);
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				entidad = this.convertOne(resultSet);

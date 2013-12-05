@@ -1,4 +1,4 @@
-package timeline.persistence;
+package timeline.persistence.relation;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-import timeline.model.AgenteSigueEmpresa;
+import timeline.model.relation.AgenteSigueEmpresa;
+import timeline.persistence.PersistenceException;
+import timeline.persistence.conn.ConnectionProvider;
 
 public class AgenteSigueEmpresaDaoImpl implements AgenteSigueEmpresaDao {
 	private static AgenteSigueEmpresaDao instance = new AgenteSigueEmpresaDaoImpl();

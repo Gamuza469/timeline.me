@@ -13,8 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import timeline.model.Empresa;
 import timeline.persistence.PersistenceException;
-import timeline.service.EmpresasEnSeguimientoSvc;
 import timeline.service.SvcFactory;
+import timeline.service.controller.EmpresasEnSeguimientoSvc;
 
 @Controller
 @SessionAttributes({"username", "tipoUsuario"})
@@ -28,7 +28,7 @@ public class EmpresasEnSeguimientoCtrl {
 			throws PersistenceException	
 	{
 		ModelAndView mav = new ModelAndView();
-		String username = (String) request.getAttribute("username");
+		int username = (int) request.getAttribute("username");
 		String tipoUsuario = (String) request.getAttribute("tipoUsuario");
 		
 		List<Empresa> listaEmpresas = empresasEnSeguimientoSvc.getEmpresasEnSeguimiento(username);

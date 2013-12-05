@@ -1,7 +1,9 @@
-package timeline.persistence;
+package timeline.persistence.conn;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import timeline.persistence.PersistenceException;
 
 public class TransactionJdbcImpl implements Transaction {
     

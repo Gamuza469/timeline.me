@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import timeline.persistence.conn.ConnectionProvider;
+
 public class AdjuntoDaoImpl implements AdjuntoDao {
 	private static AdjuntoDao instance = new AdjuntoDaoImpl();
 	public static AdjuntoDao getInstance() {
