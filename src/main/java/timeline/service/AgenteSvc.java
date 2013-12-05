@@ -6,7 +6,7 @@ import timeline.persistence.DaoFactory;
 import timeline.persistence.PersistenceException;
 
 public class AgenteSvc {
-	public Agente findByCuit (int cuit) throws PersistenceException {
+	public Agente findByCuit (String cuit) throws PersistenceException {
 		AgenteDao agenteDao = DaoFactory.getAgenteDao();
 		return agenteDao.findByCuit(cuit);
 	}

@@ -33,7 +33,7 @@ public class LoginCtrl {
 		
 		if (usuarioConfirmado == true) {
 			mav.addObject("username", username);
-			mav.setViewName("empresa");
+			mav.setViewName("redirect:/jsp/empresa.do");
 			if (esUsuarioAgente == true)
 				mav.addObject("tipoUsuario", "agente");
 			else

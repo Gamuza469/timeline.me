@@ -15,7 +15,7 @@ import timeline.persistence.relation.EmpresaAutorizaAgenteDao;
 
 public class EmpresaSvc {
 	
-	public Empresa findByCuit (int cuit) throws PersistenceException {
+	public Empresa findByCuit (String cuit) throws PersistenceException {
 		EmpresaDao empresaDao = DaoFactory.getEmpresaDao();
 		return empresaDao.findByCuit(cuit);
 	}
@@ -24,7 +24,7 @@ public class EmpresaSvc {
 		return empresaDao.findAll();
 	}
 	
-	public Empresa getEmpresa (int cuitEmpresa) throws PersistenceException {
+	public Empresa getEmpresa (String cuitEmpresa) throws PersistenceException {
 		EmpresaDao empresaDao = DaoFactory.getEmpresaDao();
 		AgenteSvc agenteSvc = SvcFactory.getAgenteSvc();
 		EntidadSvc entidadSvc = SvcFactory.getEntidadSvc();
@@ -39,8 +39,8 @@ public class EmpresaSvc {
 		List<Agente> listaAgentes = new LinkedList<Agente>();
 		List<EmpresaAutorizaAgente> listaAgentesAutorizados = empresaAutorizaAgenteDao.findByEmpresaCuit(empresa.getDatosDeEntidad().getCuit());
 		for (EmpresaAutorizaAgente item: listaAgentesAutorizados) {
-			Agente agente = agenteSvc.findByCuit(item.getCuitAgente());			
-			agente.setDatosDeEntidad(entidadSvc.findByCuit(item.getCuitAgente()));
+			Agente agente = agenteSvc.findByCuit(String.valueOf(item.getCuitAgente()));			
+			agente.setDatosDeEntidad(entidadSvc.findByCuit(String.valueOf(item.getCuitAgente())));
 			listaAgentes.add(agente);
 		}		
 		

@@ -14,21 +14,21 @@ import timeline.persistence.PersistenceException;
 import timeline.service.SvcFactory;
 import timeline.service.controller.EmpresaCtrlSvc;
 
-@SessionAttributes({"username", "tipoUsuario"})
 @Controller
+@SessionAttributes({"username", "tipoUsuario"})
 public class EmpresaCtrl {
 	
 	EmpresaCtrlSvc empresaCtrlSvc = SvcFactory.getEmpresaCtrlSvc();
 	
-	@RequestMapping(value="/empresa", method=RequestMethod.GET)
+	@RequestMapping(value="/jsp/empresa", method=RequestMethod.GET)
 	public ModelAndView getEmpresa
 		(HttpServletRequest request, HttpSession session) 
 			throws PersistenceException	
 	{
 		ModelAndView mav = new ModelAndView();
-		int username = (int) request.getAttribute("username");
-		String tipoUsuario = (String) request.getAttribute("tipoUsuario");
-		int cuitEmpresa = (int) request.getAttribute("cuitEmpresa");
+		String username = (String) request.getParameter("username");
+		String tipoUsuario = (String) request.getParameter("tipoUsuario");
+		String cuitEmpresa = (String) request.getParameter("cuitEmpresa");
 		
 		Empresa empresa = empresaCtrlSvc.getEmpresa(cuitEmpresa);
 		mav.addObject("empresa", empresa);

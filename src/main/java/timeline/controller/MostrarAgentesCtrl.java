@@ -28,8 +28,8 @@ public class MostrarAgentesCtrl {
 			throws PersistenceException
 	{
 		ModelAndView mav = new ModelAndView();
-		int username = (int) request.getAttribute("username");
-		String tipoUsuario = (String) request.getAttribute("tipoUsuario");
+		String username = (String) request.getParameter("username");
+		String tipoUsuario = (String) request.getParameter("tipoUsuario");
 		
 		List<Agente> listaAgentes = mostrarAgentesSvc.getAgentesEmpresa(username);
 		mav.addObject("listaAgentes", listaAgentes);

@@ -12,7 +12,7 @@ public class LoginSvc {
 		EntidadDao entidadDao = DaoFactory.getEntidadDao();
 		Entidad entidad = entidadDao.findByCuit(username);
 		
-		if (entidad.getPassword() == password)
+		if (entidad.getPassword().equals(password))
 			return true;
 		else
 			return false;

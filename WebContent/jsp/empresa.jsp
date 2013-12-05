@@ -14,9 +14,9 @@
         <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
         <meta name="author" content="Codrops" />
         <link rel="shortcut icon" href="../favicon.ico"> 
-        <link rel="stylesheet" type="text/css" href="css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+        <link rel="stylesheet" type="text/css" href="<c:url value='../css/demo.css'/>" />
+        <link rel="stylesheet" type="text/css" href="<c:url value='../css/style.css'/>" />
+		<link rel="stylesheet" type="text/css" href="<c:url value='../css/animate-custom.css'/>" />
 	<head>
 
 	<body>

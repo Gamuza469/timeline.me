@@ -5,6 +5,6 @@ import java.util.List;
 import timeline.model.Empresa;
 
 public interface EmpresaDao {
-	public Empresa findByCuit (int cuitEmpresa) throws PersistenceException;
+	public Empresa findByCuit (String cuitEmpresa) throws PersistenceException;
 	public List<Empresa> findAll () throws PersistenceException;
 }

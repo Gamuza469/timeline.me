@@ -6,8 +6,8 @@ import timeline.persistence.EntidadDao;
 import timeline.persistence.PersistenceException;
 
 public class EntidadSvc {
-	public Entidad findByCuit (int cuit) throws PersistenceException {
+	public Entidad findByCuit (String cuitEmpresa) throws PersistenceException {
 		EntidadDao entidadDao = DaoFactory.getEntidadDao();
-		return entidadDao.findByCuit(cuit);
+		return entidadDao.findByCuit(cuitEmpresa);
 	}
 }

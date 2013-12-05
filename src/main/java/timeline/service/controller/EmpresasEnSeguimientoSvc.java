@@ -21,8 +21,8 @@ public class EmpresasEnSeguimientoSvc {
 		List<Empresa> listaEmpresas = new LinkedList<Empresa>();
 		List<AgenteSigueEmpresa> listaAgentes = agenteSigueEmpresaSvc.findByAgenteCuit(username);
 		for (AgenteSigueEmpresa item: listaAgentes) {
-			Empresa empresa = empresaSvc.findByCuit(item.getCuitEmpresa());
-			Entidad entidad = entidadSvc.findByCuit(item.getCuitEmpresa());
+			Empresa empresa = empresaSvc.findByCuit(String.valueOf(item.getCuitEmpresa()));
+			Entidad entidad = entidadSvc.findByCuit(String.valueOf(item.getCuitEmpresa()));
 			empresa.setDatosDeEntidad(entidad);
 			listaEmpresas.add(empresa);
 		}

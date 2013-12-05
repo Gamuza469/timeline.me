@@ -9,7 +9,7 @@ import timeline.persistence.PersistenceException;
 
 public class NoticiaSvc {
 
-	public List<Noticia> findByCuit(int cuitEmpresa) throws PersistenceException {
+	public List<Noticia> findByCuit(String cuitEmpresa) throws PersistenceException {
 		NoticiaDao noticiaDao = DaoFactory.getNoticiaDao();
 		return noticiaDao.findByCuit(cuitEmpresa);
 	}

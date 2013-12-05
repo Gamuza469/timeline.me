@@ -13,7 +13,7 @@ import timeline.service.SvcFactory;
 import timeline.service.relation.EmpresaAutorizaAgenteSvc;
 
 public class MostrarAgentesSvc {
-	public List<Agente> getAgentesEmpresa (int username) throws PersistenceException {
+	public List<Agente> getAgentesEmpresa (String username) throws PersistenceException {
 		EmpresaAutorizaAgenteSvc empresaAutorizaAgenteSvc = SvcFactory.getEmpresaAutorizaAgenteSvc();
 		AgenteSvc agenteSvc = SvcFactory.getAgenteSvc();
 		EntidadSvc entidadSvc = SvcFactory.getEntidadSvc();
@@ -23,8 +23,8 @@ public class MostrarAgentesSvc {
 		List<EmpresaAutorizaAgente> listaAgentesAutorizados = empresaAutorizaAgenteSvc.findByEmpresaCuit(agente.getEmpresaContratante());
 		
 		for (EmpresaAutorizaAgente item: listaAgentesAutorizados) {
-			Agente agente2 = agenteSvc.findByCuit(item.getCuitAgente());
-			Entidad entidad = entidadSvc.findByCuit(item.getCuitAgente());
+			Agente agente2 = agenteSvc.findByCuit(String.valueOf(item.getCuitAgente()));
+			Entidad entidad = entidadSvc.findByCuit(String.valueOf(item.getCuitAgente()));
 			agente2.setDatosDeEntidad(entidad);
 			listaAgentes.add(agente2);
 		}
